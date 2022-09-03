@@ -1,0 +1,31 @@
+{%  extends "base.html.twig" %}
+
+{% block body %}
+
+    <h1>Liste des Personnes</h1>
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Date de Naissance</td>
+                <td>Âge</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if personnes is defined %}
+                {% for personne in personnes %}
+                    <tr>
+                        <td>{{ personne.lastname }}</td>
+                        <td>{{ personne.firstname }}</td>
+                        <td>{{ personne.birthDate | date("m/d/Y")  }}</td>
+                        <td>{{ personne.age }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('personne.add') }}">Ajouter</a>
+{% endblock body %}
